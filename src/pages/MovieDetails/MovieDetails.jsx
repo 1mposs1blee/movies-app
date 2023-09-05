@@ -47,7 +47,7 @@ const MovieDetails = () => {
         </>
       )}
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense>
         <Outlet />
       </Suspense>
     </main>

@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import SearchBox from 'components/SearchBox';
 import MoviesList from 'components/MoviesList';
@@ -6,6 +6,7 @@ import moviesApi from 'services/movies-api';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') ?? '';
 
@@ -13,6 +14,8 @@ const Movies = () => {
     if (!searchQuery) {
       return;
     }
+
+    setLoading(true);
 
     const fetchMovies = async () => {
       try {
@@ -26,6 +29,8 @@ const Movies = () => {
         );
 
         alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -47,10 +52,7 @@ const Movies = () => {
   return (
     <main>
       <SearchBox onFormSubmit={formSubmit} startValue={searchQuery} />
-
-      <Suspense fallback={<div>Loading...</div>}>
-        <MoviesList movies={movies} />
-      </Suspense>
+      {loading ? <div>Loading...</div> : <MoviesList movies={movies} />}
     </main>
   );
 };

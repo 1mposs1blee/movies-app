@@ -5,27 +5,30 @@ import { PageTitle } from './Home.styled';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const getTrendingMovies = async () => {
+    const getTrendingMovies = async () => {
+      try {
         const movies = await moviesApi.fetchTrendingMovies();
 
         setTrendingMovies(movies);
-      };
+      } catch (error) {
+        console.error('Помилка при завантажені трендових фільмів:', error);
 
-      getTrendingMovies();
-    } catch (error) {
-      console.error('Помилка при завантажені трендових фільмів:', error);
+        alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
-    }
+    getTrendingMovies();
   }, []);
 
   return (
     <main>
       <PageTitle>Trending Movies</PageTitle>
-      <MoviesList movies={trendingMovies} />
+      {loading ? <div>loading...</div> : <MoviesList movies={trendingMovies} />}
     </main>
   );
 };
