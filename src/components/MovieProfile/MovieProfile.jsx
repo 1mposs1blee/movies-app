@@ -42,13 +42,13 @@ const MovieProfile = ({ movieOptions }) => {
             <OverviewInfo>{overview}</OverviewInfo>
           </>
         )}
-        {genres.length ? (
+        {genres.length > 0 && (
           <>
             <GenresTitle>Genres</GenresTitle>
             <GenresInfo>{genres.map(({ name }) => name).join(', ')}</GenresInfo>
           </>
-        ) : null}
-        {production_companies.length ? (
+        )}
+        {production_companies.length > 0 && (
           <>
             <CompaniesTitle>Production Companies</CompaniesTitle>
             <ProductionCompanyImgWrapper>
@@ -65,7 +65,7 @@ const MovieProfile = ({ movieOptions }) => {
               ))}
             </ProductionCompanyImgWrapper>
           </>
-        ) : null}
+        )}
       </InfoWrapper>
     </MainWrapper>
   );
