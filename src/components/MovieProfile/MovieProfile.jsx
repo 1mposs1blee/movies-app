@@ -28,8 +28,8 @@ const MovieProfile = ({ movieOptions }) => {
       <img
         src={
           poster_path
-            ? `https://image.tmdb.org/t/p/w500${poster_path}`
-            : `https://via.placeholder.com/300x300?text=No+Image`
+            ? `https://image.tmdb.org/t/p/w400${poster_path}`
+            : `https://via.placeholder.com/400x600?text=No+Image`
         }
         alt={original_title}
       />
@@ -57,7 +57,7 @@ const MovieProfile = ({ movieOptions }) => {
                   key={id}
                   src={
                     logo_path
-                      ? `https://image.tmdb.org/t/p/w500${logo_path}`
+                      ? `https://image.tmdb.org/t/p/w200${logo_path}`
                       : `https://via.placeholder.com/200x200?text=No+Image`
                   }
                   alt={name ?? 'Production Company logo'}
@@ -75,7 +75,7 @@ export default MovieProfile;
 
 MovieProfile.propTypes = {
   movieOptions: PropTypes.shape({
-    poster_path: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
     original_title: PropTypes.string.isRequired,
     popularity: PropTypes.number.isRequired,
     overview: PropTypes.string.isRequired,

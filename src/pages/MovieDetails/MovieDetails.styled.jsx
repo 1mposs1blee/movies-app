@@ -16,6 +16,10 @@ export const Link = styled(NavLink)`
   border: none;
 `;
 
+export const AdditionalInfTitle = styled.h2`
+  margin-top: 20px;
+`;
+
 export const LinkList = styled.ul`
   display: flex;
   align-items: center;

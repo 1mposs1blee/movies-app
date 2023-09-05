@@ -2,7 +2,7 @@ import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useState, useEffect, useRef } from 'react';
 import moviesApi from 'services/movies-api';
-import { Link, LinkList } from './MovieDetails.styled';
+import { Link, LinkList, AdditionalInfTitle } from './MovieDetails.styled';
 import MovieProfile from 'components/MovieProfile';
 
 const MovieDetails = () => {
@@ -35,6 +35,7 @@ const MovieDetails = () => {
         <>
           <Link to={fromPath}>Go back</Link>
           <MovieProfile movieOptions={movieOptions} />
+          <AdditionalInfTitle>Additional information</AdditionalInfTitle>
           <LinkList>
             <li>
               <Link to="cast">Cast of Actors</Link>
