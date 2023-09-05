@@ -19,3 +19,5 @@ export const ReviewName = styled.p`
 export const ReviewContent = styled.p`
   margin-top: 5px;
 `;
+
+export const NoReviewsMessage = styled.p``;

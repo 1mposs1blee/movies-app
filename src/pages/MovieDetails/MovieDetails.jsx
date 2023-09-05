@@ -6,8 +6,7 @@ import { Link, LinkList } from './MovieDetails.styled';
 import MovieProfile from 'components/MovieProfile';
 
 const MovieDetails = () => {
-  const [movieOptions, setMovieOptions] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [movieOptions, setMovieOptions] = useState(null);
   const location = useLocation();
   const currentLocation = useRef(location);
   const { movieId } = useParams();
@@ -22,8 +21,6 @@ const MovieDetails = () => {
         console.error('Помилка при завантажені деталей фільму:', error);
 
         alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -34,7 +31,7 @@ const MovieDetails = () => {
 
   return (
     <main>
-      {!loading && (
+      {movieOptions && (
         <>
           <Link to={fromPath}>Go back</Link>
           <MovieProfile movieOptions={movieOptions} />

@@ -11,6 +11,7 @@ import {
   Popularity,
   CastWrapper,
   CastTitle,
+  NoCastMessage,
 } from './Cast.styled';
 
 const Cast = () => {
@@ -41,9 +42,11 @@ const Cast = () => {
 
   return (
     <CastWrapper>
-      {loading ? null : castInfo.length ? (
+      <CastTitle>Cast</CastTitle>
+      {loading ? (
+        <div>Loading...</div>
+      ) : castInfo.length ? (
         <>
-          <CastTitle>Cast</CastTitle>
           <CastList>
             {castInfo.map(
               ({ character, id, profile_path, original_name, popularity }) => (
@@ -69,7 +72,9 @@ const Cast = () => {
           </CastList>
         </>
       ) : (
-        'Не було знайдено списка акторів за фільмом.'
+        <NoCastMessage>
+          Не було знайдено списка акторів за фільмом.
+        </NoCastMessage>
       )}
     </CastWrapper>
   );

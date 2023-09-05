@@ -7,6 +7,7 @@ import {
   ReviewContent,
   ReviewsTitle,
   ReviewsWrapper,
+  NoReviewsMessage,
 } from './Reviews.styled';
 
 const Reviews = () => {
@@ -37,9 +38,11 @@ const Reviews = () => {
 
   return (
     <ReviewsWrapper>
-      {loading ? null : reviewsInfo.length ? (
+      <ReviewsTitle>Movie Reviews</ReviewsTitle>
+      {loading ? (
+        <div>Loading...</div>
+      ) : reviewsInfo.length ? (
         <>
-          <ReviewsTitle>Movie Reviews</ReviewsTitle>
           <ul>
             {reviewsInfo.map(({ author, id, content }) => (
               <ReviewItem key={id}>
@@ -50,7 +53,9 @@ const Reviews = () => {
           </ul>
         </>
       ) : (
-        'Не було знайдено відгуків за фільмом.'
+        <NoReviewsMessage>
+          Не було знайдено відгуків за фільмом.
+        </NoReviewsMessage>
       )}
     </ReviewsWrapper>
   );

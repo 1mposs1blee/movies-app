@@ -31,17 +31,17 @@ const MovieProfile = ({ movieOptions }) => {
             ? `https://image.tmdb.org/t/p/w500${poster_path}`
             : `https://via.placeholder.com/300x300?text=No+Image`
         }
-        alt={original_title ?? 'Image'}
+        alt={original_title}
       />
       <InfoWrapper>
         <MovieName>{original_title}</MovieName>
         <UserScore>User score: {popularity}%</UserScore>
-        {overview ? (
+        {overview && (
           <>
             <OverviewTitle>Overview</OverviewTitle>
             <OverviewInfo>{overview}</OverviewInfo>
           </>
-        ) : null}
+        )}
         {genres.length ? (
           <>
             <GenresTitle>Genres</GenresTitle>
@@ -60,7 +60,7 @@ const MovieProfile = ({ movieOptions }) => {
                       ? `https://image.tmdb.org/t/p/w500${logo_path}`
                       : `https://via.placeholder.com/200x200?text=No+Image`
                   }
-                  alt={name ?? 'Image'}
+                  alt={name ?? 'Production Company logo'}
                 />
               ))}
             </ProductionCompanyImgWrapper>

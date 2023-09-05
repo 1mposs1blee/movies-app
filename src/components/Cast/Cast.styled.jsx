@@ -44,3 +44,5 @@ export const Character = styled.p`
 export const Popularity = styled.p`
   margin-top: 10px;
 `;
+
+export const NoCastMessage = styled.p``;
