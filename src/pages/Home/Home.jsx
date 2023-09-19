@@ -14,9 +14,9 @@ const Home = () => {
 
         setTrendingMovies(movies);
       } catch (error) {
-        console.error('Помилка при завантажені трендових фільмів:', error);
+        console.error('Error while loading trending movies:', error);
 
-        alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
+        alert('Something went wrong. Please, reload the application.');
       } finally {
         setLoading(false);
       }

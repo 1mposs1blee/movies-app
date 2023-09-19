@@ -24,11 +24,11 @@ const Movies = () => {
         setMovies(moviesByQuery);
       } catch (error) {
         console.error(
-          'Помилка при завантажені фільмів за пошуковим запитом:',
+          'Error while loading movies for the search query:',
           error
         );
 
-        alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
+        alert('Something went wrong. Please, reload the application.');
       } finally {
         setLoading(false);
       }
@@ -39,7 +39,7 @@ const Movies = () => {
 
   const formSubmit = query => {
     if (query === searchQuery) {
-      alert('Ви ввели той самий пошуковий запит.');
+      alert('You entered the same search query.');
 
       return;
     }

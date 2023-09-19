@@ -29,9 +29,9 @@ const Cast = () => {
 
         setCastInfo(movieCast.cast);
       } catch (error) {
-        console.error('Помилка при завантажені списка акторів фільму:', error);
+        console.error('Error while loading the list of movie actors:', error);
 
-        alert('Щось пішло не так. Будь ласка, перезавантажте додаток.');
+        alert('Something went wrong. Please, reload the application.');
       } finally {
         setLoading(false);
       }
@@ -73,7 +73,7 @@ const Cast = () => {
         </>
       ) : (
         <NoCastMessage>
-          Не було знайдено списка акторів за фільмом.
+          No list of actors was found for the movie.
         </NoCastMessage>
       )}
     </CastWrapper>
